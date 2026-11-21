@@ -50,3 +50,5 @@ python main.py
 - [게임 실행 출력](docs/game-run.txt)에서 문제 추가, 목록, 풀이 결과와 다시 불러온 최고 점수를 확인할 수 있다.
 - [Python·Git 버전과 기능 검증](docs/verification.txt)에는 입력 예외, 재시작 후 데이터 유지, 저장 오류 복구를 확인한 결과가 있다.
 - [Git 브랜치·병합 그래프](docs/git-graph.txt)와 [로컬 복제·푸시·풀 기록](docs/git-local.txt)을 남겼다. 복제 실습에는 로컬 bare 저장소를 사용했다.
+
+GitHub에서 별도로 복제한 작업본에서 이 문구를 추가해 푸시하고, 원래 작업본에서 빠른 병합으로 가져오는 흐름을 확인했다.
