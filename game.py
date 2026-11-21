@@ -1,5 +1,6 @@
-from prompts import ask_number
+from prompts import ask_number, ask_text
 from questions import default_quizzes
+from quiz import Quiz
 
 
 MENU = """
@@ -18,6 +19,7 @@ class QuizGame:
     def run(self) -> None:
         actions = {
             1: self.play,
+            2: self.add_quiz,
         }
         try:
             while True:
@@ -50,3 +52,11 @@ class QuizGame:
                 print(f"오답입니다. 정답: {quiz.answer}. {quiz.choices[quiz.answer - 1]}")
         score = correct * 100 // total
         print(f"결과: {total}문제 중 {correct}문제 정답 ({score}점)")
+
+    def add_quiz(self) -> None:
+        print("\n새 퀴즈 등록")
+        question = ask_text("문제: ")
+        choices = [ask_text(f"선택지 {number}: ") for number in range(1, 5)]
+        answer = ask_number("정답 번호 (1~4): ", 1, 4)
+        self.quizzes.append(Quiz(question, choices, answer))
+        print("퀴즈가 추가되었습니다.")
