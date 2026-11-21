@@ -20,6 +20,7 @@ class QuizGame:
         actions = {
             1: self.play,
             2: self.add_quiz,
+            3: self.list_quizzes,
         }
         try:
             while True:
@@ -60,3 +61,11 @@ class QuizGame:
         answer = ask_number("정답 번호 (1~4): ", 1, 4)
         self.quizzes.append(Quiz(question, choices, answer))
         print("퀴즈가 추가되었습니다.")
+
+    def list_quizzes(self) -> None:
+        if not self.quizzes:
+            print("등록된 퀴즈가 없습니다.")
+            return
+        print(f"등록된 퀴즈 목록 (총 {len(self.quizzes)}개)")
+        for index, quiz in enumerate(self.quizzes, 1):
+            print(f"[{index}] {quiz.question}")
