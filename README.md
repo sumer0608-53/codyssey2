@@ -41,3 +41,5 @@ python main.py
 `state.json`은 실행 위치와 관계없이 `main.py` 옆에서 읽고 쓴다. `quizzes`에 `question`, `choices`, `answer`를 저장하고 `best_score`에 최고 점수를 저장한다. 아직 푼 적이 없으면 `best_score`는 `null`이다.
 
 파일이 없으면 기본 문제를 사용한다. JSON이 손상됐거나 형식이 맞지 않으면 안내한 뒤 기본 문제로 시작한다. 퀴즈 추가나 최고 점수 갱신 때 임시 파일에 먼저 쓴 뒤 교체한다. 개인 실행 데이터인 `state.json`은 Git에서 제외한다.
+
+복제한 작업 폴더에서 게임을 실행해도 저장 데이터는 해당 복제본에 따로 생성된다.
