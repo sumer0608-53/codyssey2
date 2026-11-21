@@ -1,6 +1,9 @@
+from pathlib import Path
+
 from prompts import ask_number, ask_text
 from questions import default_quizzes
 from quiz import Quiz
+from storage import load_state, save_state
 
 
 MENU = """
@@ -13,9 +16,19 @@ MENU = """
 
 
 class QuizGame:
-    def __init__(self) -> None:
-        self.quizzes = default_quizzes()
-        self.best_score: int | None = None
+    def __init__(self, state_path: Path) -> None:
+        self.state_path = state_path
+        self.quizzes, self.best_score = self.load()
+        self.dirty = False
+
+    def load(self) -> tuple[list[Quiz], int | None]:
+        return load_state(self.state_path)
+
+    def save(self) -> bool:
+        if save_state(self.state_path, self.quizzes, self.best_score):
+            self.dirty = False
+            return True
+        return False
 
     def run(self) -> None:
         actions = {
@@ -33,6 +46,9 @@ class QuizGame:
                 actions[selection]()
         except (KeyboardInterrupt, EOFError):
             print("\n입력이 중단되어 게임을 종료합니다.")
+        finally:
+            if self.dirty:
+                self.save()
         print("게임을 종료합니다.")
 
     def play(self) -> None:
@@ -53,6 +69,8 @@ class QuizGame:
         print(f"결과: {total}문제 중 {correct}문제 정답 ({score}점)")
         if self.best_score is None or score > self.best_score:
             self.best_score = score
+            self.dirty = True
+            self.save()
             print("새로운 최고 점수입니다!")
 
     def add_quiz(self) -> None:
@@ -61,7 +79,11 @@ class QuizGame:
         choices = [ask_text(f"선택지 {number}: ") for number in range(1, 5)]
         answer = ask_number("정답 번호 (1~4): ", 1, 4)
         self.quizzes.append(Quiz(question, choices, answer))
-        print("퀴즈가 추가되었습니다.")
+        self.dirty = True
+        if self.save():
+            print("퀴즈가 추가되었습니다.")
+        else:
+            print("퀴즈를 추가했지만 파일에 저장하지 못했습니다.")
 
     def list_quizzes(self) -> None:
         if not self.quizzes:
