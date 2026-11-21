@@ -15,12 +15,14 @@ MENU = """
 class QuizGame:
     def __init__(self) -> None:
         self.quizzes = default_quizzes()
+        self.best_score: int | None = None
 
     def run(self) -> None:
         actions = {
             1: self.play,
             2: self.add_quiz,
             3: self.list_quizzes,
+            4: self.show_score,
         }
         try:
             while True:
@@ -28,11 +30,7 @@ class QuizGame:
                 selection = ask_number("선택 (1~5): ", 1, 5)
                 if selection == 5:
                     break
-                action = actions.get(selection)
-                if action is None:
-                    print("준비 중입니다.")
-                    continue
-                action()
+                actions[selection]()
         except (KeyboardInterrupt, EOFError):
             print("\n입력이 중단되어 게임을 종료합니다.")
         print("게임을 종료합니다.")
@@ -53,6 +51,9 @@ class QuizGame:
                 print(f"오답입니다. 정답: {quiz.answer}. {quiz.choices[quiz.answer - 1]}")
         score = correct * 100 // total
         print(f"결과: {total}문제 중 {correct}문제 정답 ({score}점)")
+        if self.best_score is None or score > self.best_score:
+            self.best_score = score
+            print("새로운 최고 점수입니다!")
 
     def add_quiz(self) -> None:
         print("\n새 퀴즈 등록")
@@ -69,3 +70,9 @@ class QuizGame:
         print(f"등록된 퀴즈 목록 (총 {len(self.quizzes)}개)")
         for index, quiz in enumerate(self.quizzes, 1):
             print(f"[{index}] {quiz.question}")
+
+    def show_score(self) -> None:
+        if self.best_score is None:
+            print("아직 퀴즈를 풀지 않았습니다.")
+            return
+        print(f"최고 점수: {self.best_score}점")
