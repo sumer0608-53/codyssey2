@@ -33,6 +33,7 @@ python main.py
 ├── prompts.py      숫자·문자 입력 검증
 ├── questions.py    기본 문제 6개
 ├── storage.py      UTF-8 JSON 저장·복구
+├── docs/           게임 실행·환경·Git 검증 기록
 └── state.json      실행 중 생성되는 로컬 데이터
 ~~~
 
@@ -43,3 +44,9 @@ python main.py
 파일이 없으면 기본 문제를 사용한다. JSON이 손상됐거나 형식이 맞지 않으면 안내한 뒤 기본 문제로 시작한다. 퀴즈 추가나 최고 점수 갱신 때 임시 파일에 먼저 쓴 뒤 교체한다. 개인 실행 데이터인 `state.json`은 Git에서 제외한다.
 
 복제한 작업 폴더에서 게임을 실행해도 저장 데이터는 해당 복제본에 따로 생성된다.
+
+## 검증 기록
+
+- [게임 실행 출력](docs/game-run.txt)에서 문제 추가, 목록, 풀이 결과와 다시 불러온 최고 점수를 확인할 수 있다.
+- [Python·Git 버전과 기능 검증](docs/verification.txt)에는 입력 예외, 재시작 후 데이터 유지, 저장 오류 복구를 확인한 결과가 있다.
+- [Git 브랜치·병합 그래프](docs/git-graph.txt)와 [로컬 복제·푸시·풀 기록](docs/git-local.txt)을 남겼다. 복제 실습에는 로컬 bare 저장소를 사용했다.

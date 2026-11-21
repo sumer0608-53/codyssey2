@@ -1,0 +1,7 @@
+$ py -3 --version
+Python 3.15.2
+$ git --version
+git version 2.55.0.windows.5
+
+자동 시나리오 실행 결과
+PASS: menu, invalid inputs, add, list, play, score, restart, empty data, corrupt data, save failure, EOF and Ctrl+C

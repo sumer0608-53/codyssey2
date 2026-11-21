@@ -1,0 +1,23 @@
+Local Git rehearsal using a bare repository on this machine.
+$ git -C python-quiz push work/quiz-practice.git main
+To work/quiz-practice.git
+ * [new branch]      main -> main
+$ git clone work/quiz-practice.git work/quiz-practice-clone
+Cloning into 'work/quiz-practice-clone'...
+done.
+$ git -C work/quiz-practice-clone add README.md
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+$ git -C work/quiz-practice-clone -c commit.gpgsign=false commit -m Docs: clarify storage isolation between clones
+[main 3bb5530] Docs: clarify storage isolation between clones
+ 1 file changed, 2 insertions(+)
+$ git -C work/quiz-practice-clone push origin main
+To work/quiz-practice.git
+   7b2f0cb..3bb5530  main -> main
+$ git -C python-quiz pull --ff-only work/quiz-practice.git main
+From work/quiz-practice
+ * branch            main       -> FETCH_HEAD
+Updating 7b2f0cb..3bb5530
+Fast-forward
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+Verified: the README change arrived in the original worktree.

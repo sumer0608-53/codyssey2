@@ -1,0 +1,16 @@
+$ git log --oneline --graph --all
+* 3bb5530 Docs: clarify storage isolation between clones
+* 7b2f0cb Docs: explain topic, controls, layout and state schema
+* d56bbfe Feat: launch the quiz with a Windows double-click
+* 99c5f5e Feat: persist questions and scores to UTF-8 JSON
+* cb337f8 Feat: compute and display the highest score
+* 3cb4bab Feat: list questions and handle empty decks
+* 9c90a90 Feat: register questions with four choices
+*   ec256b1 Merge quiz round feature branch
+|\
+| * 5bdb6e0 Feat: run quiz rounds with answer feedback
+|/
+* 3aa9c56 Feat: add six original Python questions
+* a49014a Feat: model individual questions with Quiz
+* b7a6f0a Feat: add menu and validated console input
+* f3bb476 Chore: create quiz repository and ignore local state
