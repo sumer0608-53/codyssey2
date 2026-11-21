@@ -52,3 +52,5 @@ python main.py
 - [Git 브랜치·병합 그래프](docs/git-graph.txt)와 [로컬 복제·푸시·풀 기록](docs/git-local.txt)을 남겼다. 복제 실습에는 로컬 bare 저장소를 사용했다.
 
 GitHub에서 별도로 복제한 작업본에서 이 문구를 추가해 푸시하고, 원래 작업본에서 빠른 병합으로 가져오는 흐름을 확인했다.
+
+[GitHub에서 실제로 실행한 원격 연결·push·clone·pull 로그](docs/git-github.txt)에서 각 명령과 결과를 확인할 수 있다.

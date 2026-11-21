@@ -1,4 +1,6 @@
 $ git log --oneline --graph --all
+* 42bed91 Docs: verify the GitHub clone and pull workflow
+* c017857 Docs: attach verified gameplay and Git workflow evidence
 * 3bb5530 Docs: clarify storage isolation between clones
 * 7b2f0cb Docs: explain topic, controls, layout and state schema
 * d56bbfe Feat: launch the quiz with a Windows double-click

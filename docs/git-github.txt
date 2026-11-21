@@ -1,0 +1,34 @@
+$ git -C outputs/python-quiz remote add origin https://github.com/sumer0608-53/codyssey2.git
+$ git -C outputs/python-quiz push origin f3bb47670b1221f1cd6d1bef3b6a2f4e9d450f90:refs/heads/main
+To https://github.com/sumer0608-53/codyssey2.git
+ * [new branch]      f3bb47670b1221f1cd6d1bef3b6a2f4e9d450f90 -> main
+$ git -C outputs/python-quiz push -u origin main
+To https://github.com/sumer0608-53/codyssey2.git
+   f3bb476..c017857  main -> main
+branch 'main' set up to track 'origin/main'.
+$ git -C outputs/python-quiz push origin feature/quiz-play
+remote:
+remote: Create a pull request for 'feature/quiz-play' on GitHub by visiting:
+remote:      https://github.com/sumer0608-53/codyssey2/pull/new/feature/quiz-play
+remote:
+To https://github.com/sumer0608-53/codyssey2.git
+ * [new branch]      feature/quiz-play -> feature/quiz-play
+$ git clone --branch main https://github.com/sumer0608-53/codyssey2.git work/codyssey2-github-clone
+Cloning into 'work/codyssey2-github-clone'...
+$ git -C work/codyssey2-github-clone add README.md
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+$ git -C work/codyssey2-github-clone -c commit.gpgsign=false commit -m "Docs: verify the GitHub clone and pull workflow"
+[main 42bed91] Docs: verify the GitHub clone and pull workflow
+ 1 file changed, 2 insertions(+)
+$ git -C work/codyssey2-github-clone push origin main
+To https://github.com/sumer0608-53/codyssey2.git
+   c017857..42bed91  main -> main
+$ git -C outputs/python-quiz pull --ff-only origin main
+From https://github.com/sumer0608-53/codyssey2
+ * branch            main       -> FETCH_HEAD
+   c017857..42bed91  main       -> origin/main
+Updating c017857..42bed91
+Fast-forward
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+Verified: the README change from the GitHub clone is in the original worktree.
