@@ -31,6 +31,7 @@ class QuizGame:
         return False
 
     def run(self) -> None:
+        # 메뉴에 표시한 1~4번을 기능 메서드에 연결한다. 5번은 반복을 끝내고 종료 시 저장을 확인한다.
         actions = {
             1: self.play,
             2: self.add_quiz,
